@@ -10,6 +10,13 @@ Implements various regularization penalties and their proximal operators:
 import numpy as np
 from scipy import ndimage
 
+# Optional PyWavelets import
+try:
+    import pywt
+    HAS_PYWT = True
+except ImportError:
+    HAS_PYWT = False
+
 
 def soft_threshold(x, threshold):
     """
@@ -232,29 +239,26 @@ def wavelet_threshold(image, threshold, wavelet='db4', level=3):
     Returns:
         Thresholded image
     """
-    try:
-        import pywt
-        
-        # Wavelet decomposition
-        coeffs = pywt.wavedecn(image, wavelet=wavelet, level=level)
-        
-        # Threshold detail coefficients
-        coeffs_thresh = [coeffs[0]]  # Keep approximation coefficients
-        for detail in coeffs[1:]:
-            detail_thresh = {}
-            for key, coeff in detail.items():
-                detail_thresh[key] = soft_threshold(coeff, threshold)
-            coeffs_thresh.append(detail_thresh)
-        
-        # Reconstruct
-        image_thresh = pywt.waverecn(coeffs_thresh, wavelet=wavelet)
-        
-        return image_thresh
-        
-    except ImportError:
+    if not HAS_PYWT:
         # If PyWavelets not available, return simple soft threshold
         print("Warning: PyWavelets not available, using simple soft threshold")
         return soft_threshold(image, threshold)
+    
+    # Wavelet decomposition
+    coeffs = pywt.wavedecn(image, wavelet=wavelet, level=level)
+    
+    # Threshold detail coefficients
+    coeffs_thresh = [coeffs[0]]  # Keep approximation coefficients
+    for detail in coeffs[1:]:
+        detail_thresh = {}
+        for key, coeff in detail.items():
+            detail_thresh[key] = soft_threshold(coeff, threshold)
+        coeffs_thresh.append(detail_thresh)
+    
+    # Reconstruct
+    image_thresh = pywt.waverecn(coeffs_thresh, wavelet=wavelet)
+    
+    return image_thresh
 
 
 def l2_regularization(image, lambda_l2):

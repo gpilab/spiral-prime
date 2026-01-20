@@ -158,15 +158,17 @@ class ExternalNode(gpi.NodeAPI):
         reg_name = reg_map[reg_type]
         coil_method = coil_map[coil_combine]
         
-        # Parse image size
+        # Parse image size safely
         if image_size_str.lower() == 'auto':
             image_shape = None
         else:
             try:
-                image_shape = eval(image_size_str)
+                import ast
+                image_shape = ast.literal_eval(image_size_str)
                 if not isinstance(image_shape, (list, tuple)):
                     image_shape = None
-            except:
+            except (ValueError, SyntaxError):
+                logger.warning(f"Invalid image size format: {image_size_str}, using auto")
                 image_shape = None
         
         logger.info(f"Starting {algorithm_name} reconstruction")

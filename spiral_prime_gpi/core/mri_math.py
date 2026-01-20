@@ -11,6 +11,7 @@ This module provides core MRI reconstruction operations including:
 import numpy as np
 from scipy import ndimage
 from scipy.interpolate import griddata
+from scipy.spatial.distance import cdist
 import numba
 
 
@@ -279,9 +280,6 @@ def compute_density_compensation(k_traj, method='voronoi'):
     
     if method == 'voronoi':
         # Simplified Voronoi-based density compensation
-        # In practice, would use proper Voronoi tessellation
-        from scipy.spatial.distance import cdist
-        
         # Find nearest neighbor distances
         distances = cdist(k_traj, k_traj)
         np.fill_diagonal(distances, np.inf)

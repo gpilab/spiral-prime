@@ -6,6 +6,8 @@ particularly for steady-state localized-quadratic (LQ) spin-echo sequences.
 """
 
 import numpy as np
+from scipy.interpolate import RegularGridInterpolator
+from . import mri_math
 
 
 def design_spiral_trajectory(fov, resolution, n_interleaves=1, gmax=40, smax=150, 
@@ -292,7 +294,6 @@ def simulate_spiral_acquisition(image, trajectory, coil_maps, noise_std=0.0):
         coil_image = image * coil_maps[c]
         
         # FFT to k-space
-        from . import mri_math
         kspace_cart = mri_math.fft2c(coil_image)
         
         # Interpolate onto spiral trajectory
