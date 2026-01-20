@@ -1,0 +1,104 @@
+# Default reconstruction parameters for Spiral-PRIME
+
+reconstruction:
+  # Main reconstruction algorithm
+  algorithm: "iterative_sense"  # Options: iterative_sense, cg_sense, admm
+  
+  # Number of iterations
+  n_iterations: 10
+  
+  # Regularization settings
+  regularization:
+    type: "tv"  # Options: none, l1, l2, tv, tv_cp, wavelet
+    lambda: 0.001
+    tv_iterations: 10  # For TV denoising
+  
+  # Coil combination method
+  coil_combine: "adaptive"  # Options: sos, adaptive, walsh
+  
+  # Gridding parameters
+  gridding:
+    method: "linear"  # Options: linear, nearest, cubic, kb
+    kernel_width: 3  # For Kaiser-Bessel gridding
+  
+  # Density compensation
+  density_compensation:
+    enabled: true
+    method: "voronoi"  # Options: voronoi, jackson, pipe
+
+# Image reconstruction settings
+image:
+  # Matrix size (will be auto-determined if not set)
+  matrix_size: null  # [nz, ny, nx] or null for auto
+  
+  # Field of view in cm
+  fov: [24.0, 24.0, 24.0]  # [fov_z, fov_y, fov_x]
+  
+  # Resolution in mm
+  resolution: [1.0, 1.0, 1.0]  # [res_z, res_y, res_x]
+
+# Spiral trajectory parameters
+trajectory:
+  # Trajectory type
+  type: "archimedean"  # Options: archimedean, variable_density
+  
+  # Number of spiral interleaves
+  n_interleaves: 8
+  
+  # For 3D stack-of-spirals
+  stack_of_spirals: true
+  
+  # Gradient constraints
+  max_gradient: 40.0  # mT/m
+  max_slew: 150.0  # T/m/s
+  
+  # Sampling interval
+  dt: 4.0e-6  # seconds
+
+# Multi-contrast reconstruction
+multi_contrast:
+  enabled: false
+  n_contrasts: 1
+  
+  # Tissue parameters for simulation/modeling
+  tissues:
+    white_matter:
+      T1: 800  # ms
+      T2: 80   # ms
+    gray_matter:
+      T1: 1200
+      T2: 100
+    csf:
+      T1: 4000
+      T2: 2000
+
+# Output settings
+output:
+  # Output format
+  format: "nifti"  # Options: nifti, hdf5, dicom
+  
+  # Save intermediate results
+  save_intermediate: false
+  
+  # Output directory
+  output_dir: "./output"
+  
+  # Filename prefix
+  prefix: "recon"
+
+# Performance settings
+performance:
+  # Use GPU if available
+  use_gpu: false
+  
+  # Number of threads for parallel processing
+  n_threads: null  # null for auto-detect
+  
+  # Memory limit in GB
+  memory_limit: null  # null for no limit
+
+# Logging settings
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  log_file: null  # null for console only
+  verbose: true

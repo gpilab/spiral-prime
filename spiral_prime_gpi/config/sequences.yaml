@@ -1,0 +1,123 @@
+# MRI sequence parameters for different acquisitions
+
+# Standard spiral spin-echo sequence
+spiral_spin_echo:
+  name: "Spiral Spin Echo"
+  type: "spin_echo"
+  
+  # Timing parameters (ms)
+  TR: 2000  # Repetition time
+  TE: 30    # Echo time
+  
+  # Flip angle (degrees)
+  flip_angle: 90
+  
+  # Field strength (Tesla)
+  B0: 3.0
+  
+  # Readout duration (ms)
+  readout_duration: 20
+  
+  # Fat suppression
+  fat_sat: true
+
+# Fast spin-echo variant
+spiral_fse:
+  name: "Spiral Fast Spin Echo"
+  type: "fast_spin_echo"
+  
+  TR: 3000
+  TE: 80
+  flip_angle: 90
+  echo_train_length: 8
+  B0: 3.0
+  fat_sat: true
+
+# Gradient echo (for comparison)
+spiral_gre:
+  name: "Spiral Gradient Echo"
+  type: "gradient_echo"
+  
+  TR: 500
+  TE: 15
+  flip_angle: 30
+  B0: 3.0
+  
+# Localized-Quadratic (LQ) spin-echo sequence
+lq_spin_echo:
+  name: "Localized-Quadratic Spin Echo"
+  type: "lq_spin_echo"
+  
+  TR: 2500
+  TE: 40
+  flip_angle: 90
+  B0: 3.0
+  
+  # LQ-specific parameters
+  lq_parameters:
+    # Gradient moment matrix for quadratic encoding
+    gradient_moments:
+      - [0.001, 0.0, 0.0]
+      - [0.0, 0.001, 0.0]
+      - [0.0, 0.0, 0.001]
+    
+    # Shimming coefficients [x, y, z]
+    shim_coeffs: [0.0, 0.0, 0.0]
+  
+  # Multi-contrast acquisition
+  multi_contrast: true
+  n_contrasts: 3
+  
+  fat_sat: true
+
+# Steady-state sequence
+steady_state_spiral:
+  name: "Steady-State Spiral"
+  type: "steady_state"
+  
+  TR: 10  # Very short TR for steady-state
+  TE: 5
+  flip_angle: 30
+  B0: 3.0
+  
+  # Steady-state specific
+  preparation_pulses: 100  # Number of dummy pulses
+  
+# High-resolution brain imaging protocol
+brain_high_res:
+  name: "High-Resolution Brain"
+  type: "lq_spin_echo"
+  
+  TR: 3000
+  TE: 50
+  flip_angle: 90
+  B0: 3.0
+  
+  # Field of view (cm)
+  fov: [24.0, 24.0, 16.0]
+  
+  # Resolution (mm)
+  resolution: [0.5, 0.5, 0.5]
+  
+  # Spiral parameters
+  n_interleaves: 16
+  
+  lq_parameters:
+    gradient_moments:
+      - [0.002, 0.0, 0.0]
+      - [0.0, 0.002, 0.0]
+      - [0.0, 0.0, 0.002]
+    shim_coeffs: [0.0, 0.0, 0.0]
+  
+  multi_contrast: true
+  n_contrasts: 4
+  fat_sat: true
+
+# Default sequence (used if not specified)
+default:
+  name: "Default Spiral Reconstruction"
+  type: "spin_echo"
+  TR: 2000
+  TE: 30
+  flip_angle: 90
+  B0: 3.0
