@@ -292,8 +292,8 @@ def simulate_spiral_acquisition(image, trajectory, coil_maps, noise_std=0.0):
         coil_image = image * coil_maps[c]
         
         # FFT to k-space
-        from ..mri_math import fft2c
-        kspace_cart = fft2c(coil_image)
+        from . import mri_math
+        kspace_cart = mri_math.fft2c(coil_image)
         
         # Interpolate onto spiral trajectory
         real_interp = RegularGridInterpolator(

@@ -205,19 +205,37 @@ def admm_reconstruction(kspace_data, trajectory, coil_maps, image_shape,
     z = np.zeros(image_shape, dtype=complex)
     u = np.zeros(image_shape, dtype=complex)
     
-    # Encoding operator (simplified)
+    # Encoding operator (simplified for ADMM)
+    # Note: This is a simplified version that assumes Cartesian k-space for illustration
+    # A full implementation would use proper NUFFT operators
     def encode(img):
         coil_imgs = coil_maps * img[np.newaxis, ...]
         if n_dims == 2:
-            return mri_math.fft2c(coil_imgs)
+            ksp_cart = mri_math.fft2c(coil_imgs)
         else:
-            return mri_math.fft3c(coil_imgs)
+            ksp_cart = mri_math.fft3c(coil_imgs)
+        # For non-Cartesian, would need to sample at trajectory points here
+        return ksp_cart.ravel()[:kspace_data.size]  # Simplified sampling
     
-    def encode_adjoint(ksp):
-        if n_dims == 2:
-            coil_imgs = mri_math.ifft2c(ksp)
+    def encode_adjoint(ksp_samples):
+        # Reshape to match expected k-space
+        n_coils = coil_maps.shape[0]
+        # Create Cartesian k-space (zero-filled)
+        ksp_cart = np.zeros((n_coils, *image_shape), dtype=complex)
+        
+        # For proper implementation, would grid non-Cartesian samples here
+        # This is simplified - just use provided data directly if it matches
+        if ksp_samples.shape == ksp_cart.shape:
+            ksp_cart = ksp_samples
         else:
-            coil_imgs = mri_math.ifft3c(ksp)
+            # Simplified: pad/truncate to match
+            flat_size = min(ksp_samples.size, ksp_cart.size)
+            ksp_cart.ravel()[:flat_size] = ksp_samples.ravel()[:flat_size]
+        
+        if n_dims == 2:
+            coil_imgs = mri_math.ifft2c(ksp_cart)
+        else:
+            coil_imgs = mri_math.ifft3c(ksp_cart)
         return np.sum(np.conj(coil_maps) * coil_imgs, axis=0)
     
     # ADMM iterations
