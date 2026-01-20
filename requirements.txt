@@ -1,0 +1,6 @@
+numpy>=1.21
+scipy>=1.7
+h5py>=3.0
+nibabel>=3.2
+pyyaml>=5.4
+numba>=0.55
