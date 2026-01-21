@@ -22,7 +22,7 @@ Figure 3: Schematic of the Spiral-PRIME reconstruction framework.
 
 ![Figure 3 — Reconstruction Schematic](docs/figures/figure3_schematic.png)
 
-- (a) Preprocessing includes noise whitening and coil compression.
+- (a) Preprocessing includes noise whitening, coil compression, LQ + sliding-slice correction, and concomitant field correction.
 - (b) The iterative ADMM loop performs slice-wise data consistency via conjugate gradient and volumetric 3D wavelet denoising.
 
 **System Requirements**
@@ -66,7 +66,7 @@ Figure 5: Accelerated T2w results comparing spiral-SENSE and Spiral-PRIME, highl
 
 If you use this framework or the provided data, please cite:
 
-Krishnamoorthy G, Velikina JV, Pipe JG. Localized Quadratic RF encoded Spin-Echo with Spiral-PRIME Reconstruction: A Practical Alternative to 3D FSE for High-Resolution Volumetric Brain MRI. Magnetic Resonance in Medicine 95, no. 1 (2026): 400-410.
+Krishnamoorthy G, Velikina JV, Pipe JG. Localized Quadratic RF encoded Spin-Echo with Spiral-PRIME Reconstruction: A Practical Alternative to 3D FSE for High-Resolution Volumetric Brain MRI. Magnetic Resonance in Medicine (2026)
 
 ---
 
