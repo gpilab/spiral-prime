@@ -6,7 +6,7 @@ Spiral-PRIME is a comprehensive acquisition and reconstruction framework designe
 
 **Key Features**
 
-- **Simultaneous Multi-Contrast:** Acquires co-registered $T_2$w, PDw, and high-purity $T_2^*$w contrasts in a single scan without increasing total acquisition time.
+- **Simultaneous Multi-Contrast:** Acquires co-registered T2w, PDw, and high-purity T2*w contrasts in a single scan without increasing total acquisition time.
 - **Advanced Sampling:** Integrates an in-plane scheme that distributes spiral arms across echoes to maximize k-space coverage and a sliding-slice through-plane encoding to disperse artifacts.
 - **Artifact Robustness:** Novel loop-ordering strategy eliminates repeated startup cycles and mitigates motion-induced artifacts.
 - **Hybrid 2D/3D Reconstruction:** Joint spiral deblurring, fat-water separation, and 3D wavelet-based noise suppression within a unified ADMM optimization.
@@ -59,9 +59,9 @@ gpi_make
 
 **Results**
 
-Spiral-PRIME achieves consistent $T_2$w SNR gains of 30–40% compared to linear spiral-SENSE reconstructions while preserving fine structural fidelity at $800\,\mu\text{m}$ isotropic resolution.
+Spiral-PRIME achieves consistent T2w SNR gains of 30–40% compared to linear spiral-SENSE reconstructions while preserving fine structural fidelity at $800\,\mu\text{m}$ isotropic resolution.
 
-Figure 5: Accelerated $T_2$w results comparing spiral-SENSE and Spiral-PRIME, highlighting significant noise suppression and artifact mitigation.
+Figure 5: Accelerated T2w results comparing spiral-SENSE and Spiral-PRIME, highlighting significant noise suppression and artifact mitigation.
 
 ![Figure 5 — Example T2w Results](docs/figures/figure5_results.png)
 
