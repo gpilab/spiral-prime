@@ -2,13 +2,10 @@
 
 Spiral-PRIME: Physics-based Reconstruction with Iterative Model-based Enhancement
 
-Spiral-PRIME is a comprehensive acquisition and reconstruction framework designed for high-resolution volumetric brain MRI. It utilizes localized quadratic (LQ) RF encoded spin-echo imaging with spiral trajectories to provide a clinically viable alternative to 3D Fast Spin-Echo (FSE).
+Spiral-PRIME is a hybrid 2D/3D reconstruction framework designed  for localized quadratic (LQ) RF encoded spin-echo imaging. It is implemented within the Graphical Programming Interface (GPI) environment to provide high-resolution volumetric brain MRI using spiral trajectories as a clinically viable alternative to 3D Fast Spin-Echo (FSE).
 
 **Key Features**
 
-- **Simultaneous Multi-Contrast:** Acquires co-registered T2w, PDw, and high-purity T2*w contrasts in a single scan without increasing total acquisition time.
-- **Advanced Sampling:** Integrates an in-plane scheme that distributes spiral arms across echoes to maximize k-space coverage and a sliding-slice through-plane encoding to disperse artifacts.
-- **Artifact Robustness:** Novel loop-ordering strategy eliminates repeated startup cycles and mitigates motion-induced artifacts.
 - **Hybrid 2D/3D Reconstruction:** Joint spiral deblurring, fat-water separation, and 3D wavelet-based noise suppression within a unified ADMM optimization.
 
 **Reconstruction Architecture**
