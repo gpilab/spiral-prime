@@ -23,6 +23,8 @@ Where $\tilde{E}$ is the forward operator, $x$ contains the water and fat images
 
 Figure 3: Schematic of the Spiral-PRIME reconstruction framework.
 
+![Figure 3 — Reconstruction Schematic](docs/figures/figure3_schematic.png)
+
 - (a) Preprocessing includes noise whitening and coil compression.
 - (b) The iterative ADMM loop performs slice-wise data consistency via conjugate gradient and volumetric 3D wavelet denoising.
 
@@ -60,6 +62,8 @@ gpi_make
 Spiral-PRIME achieves consistent $T_2$w SNR gains of 30–40% compared to linear spiral-SENSE reconstructions while preserving fine structural fidelity at $800\,\mu\text{m}$ isotropic resolution.
 
 Figure 5: Accelerated $T_2$w results comparing spiral-SENSE and Spiral-PRIME, highlighting significant noise suppression and artifact mitigation.
+
+![Figure 5 — Example T2w Results](docs/figures/figure5_results.png)
 
 **Citation**
 
