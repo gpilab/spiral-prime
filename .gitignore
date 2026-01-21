@@ -1,0 +1,189 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.pyi
+
+# Virtual environments
+.env/
+.venv/
+venv/
+env/
+ENV/
+pip-wheel-metadata/
+.python-version
+
+# Packaging / distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+wheels/
+
+# Installer logs
+install.log
+
+# Pytest / coverage / mypy / type checkers
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.cache/
+mypy_cache/
+.dmypy.json
+.pyre/
+pyrightconfig.json
+
+# C extensions, cython
+*.so
+*.dylib
+
+# Jupyter
+.ipynb_checkpoints
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+*.swp
+*~ 
+.session/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+
+# C / C++ build artifacts
+# object files
+*.o
+*.obj
+*.lo
+*.slo
+*.lai
+*.la
+*.suo
+
+# precompiled headers
+*.gch
+*.pch
+
+# libraries
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+
+# executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.elf
+
+# debugging files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# static analysis
+*.gcno
+*.gcda
+*.prof
+
+# build directories
+build/
+Build/
+bin/
+bld/
+lib/
+lib64/
+obj/
+objs/
+dist/
+pkg/
+generated/
+cmake-build-*/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CMakeLists.txt.user
+CTestTestfile.cmake
+Makefile
+compile_commands.json
+
+# Meson / Ninja / autotools
+meson-logs/
+meson.build/
+ninja_debug.log
+.build/
+
+# Visual Studio / MSVC
+.vs/
+*.vcxproj.user
+*.vcproj.user
+*.suo
+ipch/
+*.user
+*.userosscache
+*.sln.docstates
+
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+.idea/*
+
+# Qt Creator
+*.pro.user*
+*.qmake.stash
+*.qmake.cache
+moc_*.cpp
+moc_*.c
+
+# CodeBlocks
+*.depend
+*.layout
+
+# External dependencies / third-party build output
+third_party/
+external/
+vendor/
+
+# Coverage reports
+coverage.xml
+*.cover
+*.gcov
+htmlcov/
+
+# Misc
+tags
+*.cache
+*.bak
+*.orig
+*.rej
+*.swp
+*.swo
+
+# Allowlist example (uncomment to keep)
+# !/important_file.py
